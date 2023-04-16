@@ -1,0 +1,12 @@
+{% extends "layout.html" %} {% block body %}
+<div class="box flex-column fit-content">
+  <form class="flex-column fit-content" action="/adicionar" method="get">
+    <input type="submit" value="Adicionar despesas" />
+  </form>
+  <form class="flex-column fit-content" action="/tabela" method="get">
+    <input type="submit" value="Ver Tabela" />
+  </form>
+
+</div>
+
+{% endblock %}

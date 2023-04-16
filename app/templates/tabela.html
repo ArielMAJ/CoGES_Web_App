@@ -1,0 +1,40 @@
+{% extends "layout.html" %} {% block body %}
+<form style="position: absolute; right: 30px; top: 20px" action="/">
+  <input type="submit" value="Voltar" />
+</form>
+
+{% if expenses|length != 0 %}
+<div class="box flex-row fit-content">
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>Data</th>
+      <th>Tipo</th>
+      <th>Descrição</th>
+      <th>Valor</th>
+      <th></th>
+    </thead>
+    <tbody>
+      {% for expense in expenses %}
+      <tr>
+        <td>{{ expense.id_exp }}</td>
+        <td>{{ expense.date.strftime("%d-%m-%Y") }}</td>
+        <td>{{ expense.type_exp }}</td>
+        <td>{{ expense.description }}</td>
+        <td>R$ {{ "{:.2f}".format(expense.amount) }}</td>
+        <td>
+          <form action="/tabela/{{ expense.id_exp }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Deletar" />
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="box flex-row fit-content">
+  <p>Não há despesas cadastradas</p>
+</div>
+{% endif %} {% endblock %}

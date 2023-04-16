@@ -1,0 +1,31 @@
+{% extends "layout.html" %} {% block body %} {% if show_pop_up %}
+<div class="wrapper">
+  <div id="toast">
+    <div class="container-1">
+      <i class="fas fa-check-square"></i>
+    </div>
+    <div class="container-2">
+      <p>Sucesso</p>
+      <p>Despesa adicionada com sucesso!</p>
+    </div>
+    <button id="close" onclick="closeToast()">&times;</button>
+  </div>
+</div>
+<script src="../static/script.js"></script>
+{% endif %}
+<div class="box flex-column fit-content">
+  <form class="flex-column fit-content" action="/adicionar" method="post">
+    <input autofocus name="type_exp" placeholder="Tipo" type="text" />
+
+    <input autofocus name="date" placeholder="Data" type="text" />
+
+    <input autofocus name="description" placeholder="Descrição" type="text" />
+
+    <input autofocus name="amount" placeholder="Valor em R$" type="text" />
+    <input type="submit" value="Salvar" />
+  </form>
+  <form class="flex-column fit-content" action="/" method="get">
+    <input type="submit" value="Voltar" />
+  </form>
+</div>
+{% endblock %}
